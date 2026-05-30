@@ -5,3 +5,10 @@ data/*.npz
 *.png
 .venv/
 env/
+
+# viz: ignore heavyweight artifacts, keep scene source + HTML + the small site videos
+viz/.manim-env/
+viz/Math-To-Manim/
+viz/media/
+# keep the final embedded videos (site_media/) and index.html (override the global *.png rule below if needed)
+!viz/site_media/
