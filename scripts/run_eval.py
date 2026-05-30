@@ -15,6 +15,7 @@ import numpy as np
 from src.wordle import load_answers
 from src.patterns import get_pattern_matrix
 from src.geometries import random_geometry, mds_geometry, semantic_geometry
+from src.contrastive import train_reconstruction, train_supcon
 from src.controller import build_cell_centroid_table, WordleNavigator
 from src.evaluate import (
     split_secrets, eval_geometry_agent, eval_random_agent, eval_freq_greedy, Metrics,
@@ -34,6 +35,21 @@ def load_glove_matrix(words, d):
     M = z["vectors"]  # (N, 100), nan for missing
     vectors = {w: M[i] for i, w in enumerate(words) if not np.isnan(M[i]).any()}
     return semantic_geometry(words, vectors, d=d, seed=SEED)
+
+
+def cached_train(kind, S, d):
+    """Train (or load cached) a contrastive geometry of the given kind/dim."""
+    path = os.path.join(DATA, f"geom_{kind}_d{d}.npy")
+    if os.path.exists(path):
+        return np.load(path)
+    if kind == "recon":
+        E = train_reconstruction(S, d=d, epochs=800, seed=SEED)
+    elif kind == "supcon":
+        E = train_supcon(S, d=d, epochs=800, seed=SEED, k_pos=8)
+    else:
+        raise ValueError(kind)
+    np.save(path, E)
+    return E
 
 
 def sweep_eta(nav, words, secrets, etas, mode="cell"):
@@ -78,6 +94,8 @@ def main():
         ("random-geom", lambda d: random_geometry(len(words), d=d, seed=SEED)),
         ("semantic-glove", lambda d: load_glove_matrix(words, d)),
         ("mds", lambda d: mds_geometry(S, d=d, seed=SEED)),
+        ("contrastive-recon", lambda d: cached_train("recon", S, d)),
+        ("contrastive-supcon", lambda d: cached_train("supcon", S, d)),
     ]:
         t0 = time.time()
         best_overall = None
@@ -107,13 +125,19 @@ def _make_figure(results):
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
 
-    order = ["random-guess", "freq-greedy", "random-geom", "semantic-glove", "mds"]
+    order = ["random-guess", "freq-greedy", "random-geom", "semantic-glove", "mds",
+             "contrastive-recon", "contrastive-supcon"]
     labels = [o for o in order if o in results]
     wins = [results[o].win_rate for o in labels]
     means = [results[o].mean_guesses_all for o in labels]
 
-    fig, ax = plt.subplots(1, 2, figsize=(12, 4.5))
-    colors = ["#bbb", "#bbb", "#d9a679", "#7fa8d9", "#4caf50"]
+    fig, ax = plt.subplots(1, 2, figsize=(13, 4.5))
+    color_map = {
+        "random-guess": "#bbb", "freq-greedy": "#bbb", "random-geom": "#d9a679",
+        "semantic-glove": "#7fa8d9", "mds": "#4caf50",
+        "contrastive-recon": "#2e7d32", "contrastive-supcon": "#1b5e20",
+    }
+    colors = [color_map.get(o, "#888") for o in labels]
     ax[0].bar(labels, wins, color=colors[:len(labels)])
     ax[0].set_title("Win rate within 6 guesses (held-out eval)")
     ax[0].set_ylabel("win rate"); ax[0].set_ylim(0, 1)
