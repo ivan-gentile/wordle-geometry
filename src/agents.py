@@ -37,6 +37,7 @@ def play_geometry_game(
     max_guesses: int = 6,
     eta: float = 0.7,
     mode: str = "cell",
+    readout=None,
 ) -> GameResult:
     """Play one game with the geometry-driven navigator.
 
@@ -49,6 +50,11 @@ def play_geometry_game(
                    centroid (build_cell_centroid_table).
         "arrow" -- sanity rung: move via the pattern-only displacement table
                    (build_arrow_table).
+
+    ``readout``: optional callable (nav, position, exclude_set) -> word index,
+        replacing the default nearest-word readout (e.g. the M4 informed readout
+        that prefers high-probe-score words among the k-nearest). Frozen-contract
+        safe as long as the callable reads no P at play-time.
     """
     secret_idx = words.index(secret)
     p = nav.initial_position()
@@ -57,7 +63,10 @@ def play_geometry_game(
     dist_trace: List[float] = []
 
     for _ in range(max_guesses):
-        gi = nav.nearest_word(p, exclude=tried)
+        if readout is not None:
+            gi = readout(nav, p, tried)
+        else:
+            gi = nav.nearest_word(p, exclude=tried)
         tried.add(gi)
         guess = words[gi]
         guesses.append(guess)

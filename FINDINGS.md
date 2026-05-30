@@ -69,6 +69,34 @@ play-and-move training, or the 13k-guess list / information-gain readout).
 - Enforced by a test asserting `src/controller.py` imports neither
   `src.patterns` nor `src.similarity`.
 
+## M4 attempts (closing the gap to the entropy solver) — two clean negatives
+
+The gap from SupCon's 0.75 to the entropy solver's 0.997 was diagnosed first:
+SupCon wins **0.73 @ 6 guesses, 0.87 @ 8, 0.93 @ 10, 0.98 @ 15** — it is *pointed
+correctly* but converges too slowly to fit inside 6 guesses. Two cheap,
+frozen-contract-respecting levers were tested on the eval split:
+
+1. **Information-aware readout** (`src/m4.py`): bake a per-word probe-quality
+   score (entropy of the word's pattern distribution) at build time, then read
+   out the highest-scoring word among the k-nearest to the position.
+   **Result: monotonically WORSE.** win@6 fell 0.75 → 0.51 (k=3) → 0.27 (k=8) →
+   0.19 (k=12). *Why:* the position vector already encodes the agent's belief
+   about the answer; the nearest word IS that belief. Substituting an
+   informative-but-farther probe discards the belief the geometry built — at
+   large k the agent just plays generic high-entropy openers and collapses
+   toward the random-geometry floor. **The information lives in the position,
+   not in a separate probe score; the readout should stay greedy-nearest.**
+
+2. **eta schedule** (commit harder over turns): no schedule beat flat eta=0.7
+   (0.746). Increasing schedules were all slightly worse (0.69–0.72). Flat
+   eta=0.7 is already near-optimal for this readout/geometry.
+
+**Conclusion:** the residual gap is not a readout or step-size problem. It is
+that a single frozen movement carries limited combinatorial information per turn.
+Closing it requires the heavy lever — **differentiable play-and-move training**
+that retrains E end-to-end on the win objective so the geometry itself learns to
+converge inside 6 turns. Left as future work (M5).
+
 ## Limitations / honest caveats
 
 - The cell-silhouette diagnostic was **inconclusive** (all near zero): raw
