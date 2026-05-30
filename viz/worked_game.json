@@ -1,0 +1,432 @@
+{
+ "secret": "YACHT",
+ "guesses": [
+  {
+   "word": "SHARE",
+   "codes": [
+    0,
+    1,
+    1,
+    0,
+    0
+   ],
+   "dist": 7.33
+  },
+  {
+   "word": "WATCH",
+   "codes": [
+    0,
+    2,
+    1,
+    1,
+    1
+   ],
+   "dist": 5.323
+  },
+  {
+   "word": "YACHT",
+   "codes": [
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "dist": 1.597
+  }
+ ],
+ "secret_xy": [
+  -1.5187508601757678,
+  2.1359944559262134
+ ],
+ "guess_xy": [
+  [
+   3.4819244720700686,
+   1.2912250768861206
+  ],
+  [
+   -1.51646162073608,
+   2.87837695113847
+  ],
+  [
+   -1.5187508601757678,
+   2.1359944559262134
+  ]
+ ],
+ "belief_xy": [
+  [
+   3.2687672866262685,
+   0.021324875954247702
+  ],
+  [
+   0.5814450477997876,
+   0.8308583620663036
+  ],
+  [
+   -0.8886920877831007,
+   1.7444536277682405
+  ]
+ ],
+ "context": [
+  {
+   "word": "AMITY",
+   "xy": [
+    -2.6415329473704747,
+    -2.9409222045356174
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "BATCH",
+   "xy": [
+    -3.3292224235450933,
+    3.767933832674888
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "BELCH",
+   "xy": [
+    2.4774262936068254,
+    -0.4908819933042401
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "BLESS",
+   "xy": [
+    4.940672258644286,
+    1.4225907141730019
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "BROWN",
+   "xy": [
+    2.5906482950086147,
+    1.1594285590998827
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "BUNCH",
+   "xy": [
+    1.798458174961163,
+    2.6703579778622526
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "BUTCH",
+   "xy": [
+    0.6347225956669033,
+    3.517122380008256
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "CABBY",
+   "xy": [
+    0.6093826828578701,
+    -1.7010095655258497
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "CACTI",
+   "xy": [
+    -1.5348062569843648,
+    0.7196207628051927
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "CAPUT",
+   "xy": [
+    -4.566090298375664,
+    2.5840042703399204
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "CATCH",
+   "xy": [
+    -3.861496221273906,
+    3.187205012343723
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "CATTY",
+   "xy": [
+    -3.9122063844715766,
+    -0.8847924378537033
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "ENVOY",
+   "xy": [
+    3.686768901929712,
+    0.616298408328175
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "FAITH",
+   "xy": [
+    -2.4973785636173003,
+    -0.09057521949718306
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "FATTY",
+   "xy": [
+    -4.014992678122152,
+    -3.9208106074063505
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "FROZE",
+   "xy": [
+    4.129191456936787,
+    0.5837378591029966
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "HATCH",
+   "xy": [
+    -3.5485400007703367,
+    3.0001887307400117
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "KNOCK",
+   "xy": [
+    2.1716525711565273,
+    2.24287014836182
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "LATCH",
+   "xy": [
+    -2.3174134511617823,
+    3.041815302859581
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "MATCH",
+   "xy": [
+    -2.648078996616789,
+    2.495772157030863
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "PASTY",
+   "xy": [
+    -0.3687164788404724,
+    -2.585584645661527
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "PATCH",
+   "xy": [
+    -3.5405529865916527,
+    3.3812642366461048
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "PATIO",
+   "xy": [
+    0.3915578224715921,
+    -0.5350190264107869
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "PATTY",
+   "xy": [
+    -2.006132327356709,
+    -2.631817936745326
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "PROSE",
+   "xy": [
+    4.271531552832701,
+    0.14710021234341028
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "PRUNE",
+   "xy": [
+    3.6982231538162247,
+    0.6997693919138888
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "RATTY",
+   "xy": [
+    -1.0729356189782229,
+    -3.627194413612303
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "ROVER",
+   "xy": [
+    3.8435749168077287,
+    1.0569854496470368
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "SHARE",
+   "xy": [
+    3.4819244720700686,
+    1.2912250768861206
+   ],
+   "is_secret": false,
+   "is_guess": true
+  },
+  {
+   "word": "SHEAR",
+   "xy": [
+    3.2905887683409945,
+    -0.07175100364427424
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "SMELT",
+   "xy": [
+    3.325767075703558,
+    -1.270361614270986
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "TABBY",
+   "xy": [
+    -1.2306447289435565,
+    -4.671593423040472
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "TACKY",
+   "xy": [
+    -1.0873538028741567,
+    -2.1777901831129816
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "TAFFY",
+   "xy": [
+    -1.3986410962169868,
+    -3.9845715249940628
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "TARDY",
+   "xy": [
+    0.42895466582385156,
+    -4.2816081875168
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "TATTY",
+   "xy": [
+    -1.6129002295874693,
+    -3.6891694663364554
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "WACKY",
+   "xy": [
+    0.970186585813506,
+    -2.268274369514927
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "WARTY",
+   "xy": [
+    0.522095481518639,
+    -3.372570933036752
+   ],
+   "is_secret": false,
+   "is_guess": false
+  },
+  {
+   "word": "WATCH",
+   "xy": [
+    -1.51646162073608,
+    2.87837695113847
+   ],
+   "is_secret": false,
+   "is_guess": true
+  },
+  {
+   "word": "YACHT",
+   "xy": [
+    -1.5187508601757678,
+    2.1359944559262134
+   ],
+   "is_secret": true,
+   "is_guess": true
+  }
+ ]
+}
