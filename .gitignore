@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+data/*.npy
+data/*.npz
+*.png
+.venv/
+env/
