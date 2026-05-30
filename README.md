@@ -56,9 +56,33 @@ micromamba run -p ./.venv python -m scripts.run_eval          # decisive figure 
 micromamba run -p ./.venv python -m pytest tests/ -q          # all tests
 ```
 
+## Result (held-out eval, same frozen controller)
+
+| geometry | win@6 | mean guesses |
+|---|---|---|
+| random-guess / freq-greedy | 0.002 | ~7.0 |
+| random-geometry | 0.31 | 6.16 |
+| semantic-GloVe | 0.17 | 6.46 |
+| MDS (feedback) | 0.66 | 5.34 |
+| contrastive-SupCon | **0.75** | **4.90** |
+| entropy-solver (ceiling) | 0.997 | 3.58 |
+
+**Competence scales with geometry quality.** Feedback-learned geometry beats
+random by 2.4x under an identical controller; semantic meaning is *worse* than
+random (it's anti-correlated with letter structure); SupCon (local
+neighborhood shaping) beats closed-form MDS. The per-turn distance to the secret
+converges only for the feedback geometries — direct evidence that "moving
+downhill" is real. See [`FINDINGS.md`](FINDINGS.md).
+
 ## Status
 
-- M0 substrate: done (Wordle rule, pattern matrix, similarity).
-- M1 MDS + controls: done.
-- M2 contrastive: in progress.
-- M3 analysis (convergence trace, cell convexity, entropy-solver ceiling): planned.
+- M0 substrate (Wordle rule, pattern matrix, similarity): **done**.
+- M1 MDS + random/semantic controls + frozen controller + eval: **done**.
+- M2 contrastive geometry (reconstruction + SupCon, CLXAI losses): **done**.
+- M3 analysis (convergence trace, cell convexity, entropy-solver ceiling): **done**.
+- M4 (future): differentiable play-and-move training; 13k-guess list;
+  information-gain-aware readout.
+
+```bash
+micromamba run -p ./.venv python -m scripts.run_analysis   # M3 figures + entropy ceiling
+```
