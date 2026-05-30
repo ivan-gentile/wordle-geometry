@@ -2,6 +2,10 @@
 
 **Can Wordle competence be stored as fixed geometry instead of per-move search?**
 
+> 🎬 **Live results page (for a general audience, with animations):**
+> **https://ivan-gentile.github.io/wordle-geometry/** — built with Manim
+> (source in [`viz/`](viz/)).
+
 3b1b's classic solver does expensive combinatorial search (entropy maximization)
 on every move. This project asks whether that competence can instead be
 **amortized once into the geometry of an embedding space**, so that at play-time
